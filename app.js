@@ -90,6 +90,7 @@ app.use((err,req,res,next) => {
     res.status(statusCode).render('error_temp',{err});
 })
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
+const server = process.env.PORT || 3000;
+app.listen(server, () => {
+    console.log(`Serving on port ${server}`)
 })
