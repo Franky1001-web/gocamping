@@ -1,14 +1,29 @@
+<style>
+  .alert{
+    width: 20%;
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    z-index: 4;
+    font-weight: 300;
+    transition: all 1s;
+  }
+  .close{
+    position: absolute;
+    right: 10px;
+  }
+</style>
 <% if(success && success.length){ %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert" style="font-weight: 300;" >
-      <%= success %> 
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="border: none; background: none;">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= success %> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="border: none; background: none;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <% } %>
 
 <% if(error && error.length){ %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert"  style="font-weight: 300;">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <%= error %> 
     <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="border: none; background: none;">
       <span aria-hidden="true">&times;</span>

@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
-    <h1>All Campgrounds</h1>
-    <div>
+    <div style="font-size: 2em; position: relative; left: 15px;">
+        <span style="display: block; text-align: center;">All Campgrounds</span>
         <a href="/campgrounds/new" class="btn bg-dark text-light border-light">Add Campground</a>
     </div>
     
@@ -9,7 +9,7 @@
             <div class="card text-dark index-card" style="width: 18rem; display: inline-block; margin: 15px;">
                 <div>
                     <% if (campground.images.length) { %>
-                     <img src="<%= campground.images[0].url %> " class="card-img-top">
+                     <img src="<%= campground.images[0].url %> " class="card-img-top" height="180" width="300">
                     <% } else{ %>
                         <img src="https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="">
                     <% } %> 
