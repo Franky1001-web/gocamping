@@ -12,6 +12,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const expressSanitizer = require('express-sanitizer');
+const MongoStore = require('connect-mongo');
 
 //Models
 const expressError = require('./utils/ExpressError');
@@ -42,8 +43,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'public')));
 
+const store = MongoStore.create({
+    mongoUrl: dbURL,
+    secret: "thisisasessionsecret",
+    touchAfter: 24*60*60
+})
+
+store.on("error", (e) => {
+    console.log("Session store error",e);
+})
+
 const sessionConfig = {
-    secret: "itssecret",
+    store,
+    secret: "thisisasessionsecret",
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -52,6 +64,7 @@ const sessionConfig = {
         maxAge: 1000*60*60*24*7
     }
 }
+
 app.use(session(sessionConfig));
 app.use(flash())
 
